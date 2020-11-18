@@ -1,4 +1,4 @@
-# AmazonTest
+# Amazon Test
 
 Project was implemented with usage of Selenium WebDriver, Junit and Cucumber
 
