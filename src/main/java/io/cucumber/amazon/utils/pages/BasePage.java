@@ -27,7 +27,6 @@ public class BasePage {
     @FindBy(name = "quantity")
     private WebElement quantity;
 
-
     @FindBy(id = "sc-subtotal-amount-activecart")
     private WebElement subtotalValue;
 

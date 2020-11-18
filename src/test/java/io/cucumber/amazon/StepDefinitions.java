@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 
 import static com.google.common.math.DoubleMath.fuzzyEquals;
 import static io.cucumber.amazon.Hooks.*;
-import static io.cucumber.amazon.utils.TestData.TestData.TOLERANCE;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StepDefinitions {
@@ -17,6 +16,7 @@ public class StepDefinitions {
     private double manHatPriceSearch;
     private double calculatedSubtotal2Items;
     private double subtotalValueFinal;
+    private static final double TOLERANCE = 0.00001;
 
     @Given("Search for {string}")
     public void SearchForValue(String searchText) {
@@ -46,7 +46,6 @@ public class StepDefinitions {
     @Then("Check if subtotal value correct for single product")
     public void checkPrice() {
         double subtotal = amazonCartPage.getSubtotalValue();
-
         assertThat("Subtotal value for three items is correct",
                 (subtotal == womenHatPriceProduct));
     }
@@ -60,7 +59,6 @@ public class StepDefinitions {
 
     @When("Validate if prices from search page and product page are the same for two man hats")
     public void validatePricesForManHats() {
-
         assertThat("Prices on search page and on product page are equals",
                 manHatPriceSearch == manHatPriceProduct);
     }
@@ -75,7 +73,6 @@ public class StepDefinitions {
     @Then("Check if subtotal value correct for {int} same hats")
     public void checkPriceMultipleQuantity(int number) {
         double subtotalValueForItemsInCart = amazonCartPage.getSubtotalValue();
-
         assertThat("Subtotal value for two items is correct",
                 fuzzyEquals(subtotalValueForItemsInCart,manHatPriceProduct * number, TOLERANCE));
     }
@@ -83,9 +80,7 @@ public class StepDefinitions {
     @When("Set quantity for selected by {string} item to index {int}")
     public void setQuantityForSelectedItem(String oldValue, int index) {
         calculatedSubtotal2Items = (manHatPriceProduct * index) + womenHatPriceProduct;
-
         amazonCartPage.getQuantityByValueAndSetNewOne(oldValue, index, calculatedSubtotal2Items);
-
         subtotalValueFinal = amazonCartPage.getSubtotalValue();
     }
 
@@ -99,6 +94,5 @@ public class StepDefinitions {
     public void checkForErrorPageText() {
         assertThat("!ncorrect input causes absence of item list",
                 amazonSearchPage.getFoundElements().isEmpty());
-
     }
 }
