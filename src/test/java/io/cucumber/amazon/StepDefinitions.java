@@ -92,7 +92,7 @@ public class StepDefinitions {
 
     @Then("Check incorrect input causes absence of item list")
     public void checkForErrorPageText() {
-        assertThat("!ncorrect input causes absence of item list",
+        assertThat("Incorrect input causes absence of item list",
                 amazonSearchPage.getFoundElements().isEmpty());
     }
 }

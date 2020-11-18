@@ -35,12 +35,12 @@ public class AmazonCartPage extends BasePage{
             Select select = new Select(we);
             String selected = select.getFirstSelectedOption().getText();
             if (selected.contains(oldValue)) {
-                setQuantity(index, we, calculatedSubtotal);
+                setQuantityToSelectedItem(index, we, calculatedSubtotal);
             }
         }
     }
 
-    public void setQuantity(int index, WebElement we, double calculatedSubtotal) {
+    public void setQuantityToSelectedItem(int index, WebElement we, double calculatedSubtotal) {
         while ((int)getSubtotalValue() > (int)calculatedSubtotal) {
             Select select = new Select(we);
             select.selectByIndex(index + 1);

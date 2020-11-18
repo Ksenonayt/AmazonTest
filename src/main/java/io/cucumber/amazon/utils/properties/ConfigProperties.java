@@ -7,10 +7,11 @@ import java.util.Properties;
 public class ConfigProperties {
     private static FileInputStream fileInputStream;
     private static Properties PROPERTIES;
+    private static String PROPERTY_PATH = "src/main/resources/config.properties";
 
     static {
         try {
-            fileInputStream = new FileInputStream("src/main/resources/config.properties");
+            fileInputStream = new FileInputStream(PROPERTY_PATH);
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
