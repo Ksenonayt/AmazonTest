@@ -14,7 +14,7 @@ public class StepDefinitions {
     private double womenHatPriceSearch;
     private double manHatPriceProduct;
     private double manHatPriceSearch;
-    private double calculatedSubtotal2Items;
+    private double calculatedSubtotalNItems;
     private double subtotalValueFinal;
     private static final double TOLERANCE = 0.00001;
 
@@ -79,15 +79,15 @@ public class StepDefinitions {
 
     @When("Set quantity for selected by {string} item to index {int}")
     public void setQuantityForSelectedItem(String oldValue, int index) {
-        calculatedSubtotal2Items = (manHatPriceProduct * index) + womenHatPriceProduct;
-        amazonCartPage.getQuantityByValueAndSetNewOne(oldValue, index, calculatedSubtotal2Items);
+        calculatedSubtotalNItems = (manHatPriceProduct * index) + womenHatPriceProduct;
+        amazonCartPage.getQuantityByValueAndSetNewOne(oldValue, index, calculatedSubtotalNItems);
         subtotalValueFinal = amazonCartPage.getSubtotalValue();
     }
 
     @Then("Validate subtotal value is correct after quantity changed")
     public void setQuantityForSelectedItem() {
         assertThat("Subtotal value for two products is correct",
-                fuzzyEquals(subtotalValueFinal, calculatedSubtotal2Items, TOLERANCE));
+                fuzzyEquals(subtotalValueFinal, calculatedSubtotalNItems, TOLERANCE));
     }
 
     @Then("Check incorrect input causes absence of item list")
