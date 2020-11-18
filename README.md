@@ -1,6 +1,6 @@
 # AmazonTest
 
-Project is implemented with usage of Selenium WebDriver, Junit and Cucumber
+Project was implemented with usage of Selenium WebDriver, Junit and Cucumber
 
 To configure project before execution: 
   - find src/main/resources/config.properties
